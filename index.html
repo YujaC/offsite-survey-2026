@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Group IT Leadership Offsite 2026 — Feedback Survey</title>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --card: #ffffff;
+    --ink: #1a1d21;
+    --ink-soft: #5b6470;
+    --line: #e3e6ea;
+    --accent: #c8102e;
+    --accent-soft: #fdeef0;
+    --star: #f5b301;
+    --focus: #2563eb;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101216;
+      --card: #1a1e24;
+      --ink: #eceef1;
+      --ink-soft: #9aa3ad;
+      --line: #2b313a;
+      --accent: #ff4d63;
+      --accent-soft: #33161b;
+      --star: #f5b301;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    padding: 24px 16px 80px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+
+  header { text-align: center; padding: 28px 8px 8px; }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 999px;
+    padding: 6px 14px;
+    margin-bottom: 14px;
+  }
+  h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.01em; }
+  .intro { color: var(--ink-soft); margin-top: 10px; font-size: 15px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 26px 22px;
+    margin-top: 22px;
+  }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .section-title { font-size: 19px; font-weight: 700; margin-bottom: 18px; }
+
+  .q { margin-bottom: 26px; }
+  .q:last-child { margin-bottom: 4px; }
+  .q-label { font-weight: 600; font-size: 15px; margin-bottom: 12px; display: block; }
+  .q-label .opt { color: var(--ink-soft); font-weight: 400; font-size: 13px; }
+
+  /* Stars */
+  .stars { display: flex; gap: 6px; }
+  .stars input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .stars label { cursor: pointer; padding: 2px; border-radius: 8px; }
+  .stars label:focus-within { outline: 2px solid var(--focus); }
+  .stars svg { width: 34px; height: 34px; fill: none; stroke: var(--ink-soft); stroke-width: 1.6; transition: transform .08s ease; display: block; }
+  .stars label:hover svg { transform: scale(1.12); }
+  .stars label.filled svg { fill: var(--star); stroke: var(--star); }
+
+  /* Radio & checkbox rows */
+  .choices { display: flex; flex-direction: column; gap: 8px; }
+  .choice {
+    display: flex; align-items: center; gap: 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 11px 14px;
+    cursor: pointer;
+    font-size: 14.5px;
+    transition: border-color .12s ease, background .12s ease;
+  }
+  .choice:hover { border-color: var(--accent); }
+  .choice input { accent-color: var(--accent); width: 17px; height: 17px; flex-shrink: 0; cursor: pointer; }
+  .choice.checked { border-color: var(--accent); background: var(--accent-soft); }
+  .choice input:disabled { cursor: not-allowed; }
+  .choice.disabled { opacity: 0.45; cursor: not-allowed; }
+
+  .day-head {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--ink-soft);
+    margin: 16px 0 8px;
+  }
+  .day-head:first-of-type { margin-top: 4px; }
+  .counter { font-size: 13px; color: var(--ink-soft); margin-top: 10px; }
+  .counter.max { color: var(--accent); font-weight: 600; }
+
+  /* 1–5 scale */
+  .scale { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .scale-ends { font-size: 12.5px; color: var(--ink-soft); white-space: nowrap; }
+  .scale-opts { display: flex; gap: 8px; }
+  .scale-opts label {
+    position: relative; cursor: pointer;
+    width: 44px; height: 44px;
+    border: 1px solid var(--line); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600; font-size: 15px;
+    transition: all .12s ease;
+  }
+  .scale-opts label:hover { border-color: var(--accent); }
+  .scale-opts input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+  .scale-opts label.checked { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .scale-opts label:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  textarea, input[type="text"] {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--ink);
+    font: inherit;
+    font-size: 14.5px;
+    padding: 11px 14px;
+    resize: vertical;
+  }
+  textarea:focus, input[type="text"]:focus { outline: 2px solid var(--focus); border-color: transparent; }
+  textarea { min-height: 76px; }
+
+  .submit-row { text-align: center; margin-top: 28px; }
+  button[type="submit"] {
+    background: var(--accent);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 46px;
+    cursor: pointer;
+    transition: transform .1s ease, opacity .12s ease;
+  }
+  button[type="submit"]:hover { transform: translateY(-1px); opacity: .92; }
+  button[type="submit"]:disabled { opacity: .55; cursor: wait; transform: none; }
+
+  footer { text-align: center; color: var(--ink-soft); font-size: 13.5px; margin-top: 26px; }
+
+  .thanks {
+    display: none;
+    text-align: center;
+    padding: 70px 24px;
+  }
+  .thanks .tick {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: 34px; line-height: 64px;
+    margin: 0 auto 20px;
+  }
+  .thanks h2 { font-size: 24px; margin-bottom: 10px; }
+  .thanks p { color: var(--ink-soft); }
+  body.submitted form, body.submitted header, body.submitted footer { display: none; }
+  body.submitted .thanks { display: block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="badge">Group IT Leadership Offsite 2026 · Bökars</div>
+    <h1>Feedback Survey</h1>
+    <p class="intro">Thank you for a great week. 2 minutes, 9 questions.<br>Your feedback shapes the next one. Responses are anonymous.</p>
+  </header>
+
+  <div class="thanks card">
+    <div class="tick">✓</div>
+    <h2>Thank you!</h2>
+    <p>Your feedback has been recorded.<br>Summary and actions will be shared by Huan in the coming weeks.</p>
+  </div>
+
+  <form id="survey" action="https://formsubmit.co/yuja.chang@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="Offsite 2026 Survey Response">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" id="nextUrl" value="">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+    <!-- SECTION 1 -->
+    <div class="card">
+      <div class="section-label">Section 1</div>
+      <div class="section-title">Overall</div>
+
+      <div class="q">
+        <span class="q-label">1. How valuable was the offsite overall?</span>
+        <div class="stars" data-stars>
+          <label><input type="radio" name="Q1 — Overall value (1–5)" value="1 — ★" required><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+          <label><input type="radio" name="Q1 — Overall value (1–5)" value="2 — ★★"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+          <label><input type="radio" name="Q1 — Overall value (1–5)" value="3 — ★★★"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+          <label><input type="radio" name="Q1 — Overall value (1–5)" value="4 — ★★★★"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+          <label><input type="radio" name="Q1 — Overall value (1–5)" value="5 — ★★★★★"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="q-label">2. Three days was:</span>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="Q2 — Duration" value="Too short" required> Too short</label>
+          <label class="choice"><input type="radio" name="Q2 — Duration" value="About right"> About right</label>
+          <label class="choice"><input type="radio" name="Q2 — Duration" value="Too long"> Too long</label>
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="q-label">3. The balance between presentations, breakouts, and free time was:</span>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="Q3 — Balance" value="Too many presentations" required> Too many presentations</label>
+          <label class="choice"><input type="radio" name="Q3 — Balance" value="About right"> About right</label>
+          <label class="choice"><input type="radio" name="Q3 — Balance" value="Too many breakouts"> Too many breakouts</label>
+          <label class="choice"><input type="radio" name="Q3 — Balance" value="Not enough free time"> Not enough free time</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="card">
+      <div class="section-label">Section 2</div>
+      <div class="section-title">Content</div>
+
+      <div class="q">
+        <span class="q-label">4. Which sessions were most valuable to you? <span class="opt">(select up to 3)</span></span>
+
+        <div class="day-head">Tuesday</div>
+        <div class="choices" data-sessions>
+          <label class="choice"><input type="checkbox" value="Phoenix & GLUE Win Sharing"> Phoenix &amp; GLUE Win Sharing</label>
+          <label class="choice"><input type="checkbox" value="Brand/Region Dragons' Den"> Brand/Region Dragons' Den</label>
+          <label class="choice"><input type="checkbox" value="IT Ops Session"> IT Ops Session</label>
+          <label class="choice"><input type="checkbox" value="Region Sharing (China / APAC)"> Region Sharing (China / APAC)</label>
+          <label class="choice"><input type="checkbox" value="ASCENT Delivery Review"> ASCENT Delivery Review</label>
+        </div>
+
+        <div class="day-head">Wednesday</div>
+        <div class="choices" data-sessions>
+          <label class="choice"><input type="checkbox" value="FP&A Alignment / ABP 2027"> FP&amp;A Alignment / ABP 2027</label>
+          <label class="choice"><input type="checkbox" value="Tech Strategy — North Star"> Tech Strategy — North Star</label>
+          <label class="choice"><input type="checkbox" value="AI Immersion Session"> AI Immersion Session</label>
+          <label class="choice"><input type="checkbox" value="AI Claude Training"> AI Claude Training</label>
+          <label class="choice"><input type="checkbox" value="Breakout — Arc'teryx Finance Allocation"> Breakout Session — Arc'teryx Finance Allocation</label>
+          <label class="choice"><input type="checkbox" value="Breakout — Wilson Op Model & Org"> Breakout Session — Wilson Op Model &amp; Org</label>
+          <label class="choice"><input type="checkbox" value="IT Council"> IT Council</label>
+        </div>
+
+        <div class="day-head">Thursday</div>
+        <div class="choices" data-sessions>
+          <label class="choice"><input type="checkbox" value="Orion Phase 2"> Orion Phase 2</label>
+          <label class="choice"><input type="checkbox" value="Breakout — Catalog of Services & Ways of Working"> Breakout Session — Catalog of Services &amp; Ways of Working</label>
+          <label class="choice"><input type="checkbox" value="Breakout — Cyber Connect"> Breakout Session — Cyber Connect</label>
+          <label class="choice"><input type="checkbox" value="Breakout — Data Incident Management"> Breakout Session — Data Incident Management</label>
+          <label class="choice"><input type="checkbox" value="Breakout — ASCENT"> Breakout Session — ASCENT</label>
+          <label class="choice"><input type="checkbox" value="Breakout — Arc x Group IT Process Integration"> Breakout Session — Arc x Group IT Process Integration</label>
+          <label class="choice"><input type="checkbox" value="Talent & Capability — Workforce Planning in Light of AI"> Talent &amp; Capability — Workforce Planning in Light of AI</label>
+          <label class="choice"><input type="checkbox" value="ITGC / SOX Update"> ITGC / SOX Update</label>
+          <label class="choice"><input type="checkbox" value="State of IT"> State of IT</label>
+        </div>
+
+        <div class="counter" id="counter">0 of 3 selected</div>
+        <input type="hidden" name="Q4 — Most valuable sessions" id="sessionsField" value="—">
+      </div>
+
+      <div class="q">
+        <label class="q-label" for="q5">5. What topic deserved more time, or was missing? <span class="opt">(optional)</span></label>
+        <textarea id="q5" name="Q5 — Topic missing / deserved more time" maxlength="500" placeholder="Your thoughts…"></textarea>
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="card">
+      <div class="section-label">Section 3</div>
+      <div class="section-title">Format &amp; Logistics</div>
+
+      <div class="q">
+        <span class="q-label">6. Session length and timekeeping worked well:</span>
+        <div class="scale">
+          <span class="scale-ends">Disagree</span>
+          <div class="scale-opts" data-scale>
+            <label><input type="radio" name="Q6 — Timekeeping (1–5)" value="1" required>1</label>
+            <label><input type="radio" name="Q6 — Timekeeping (1–5)" value="2">2</label>
+            <label><input type="radio" name="Q6 — Timekeeping (1–5)" value="3">3</label>
+            <label><input type="radio" name="Q6 — Timekeeping (1–5)" value="4">4</label>
+            <label><input type="radio" name="Q6 — Timekeeping (1–5)" value="5">5</label>
+          </div>
+          <span class="scale-ends">Agree</span>
+        </div>
+      </div>
+
+      <div class="q">
+        <span class="q-label">7. Venue, evenings, and activities (Bökars, sauna, kayaks, dinners):</span>
+        <div class="stars" data-stars>
+          <label><input type="radio" name="Q7 — Venue & activities (1–5)" value="1 — ★" required><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+          <label><input type="radio" name="Q7 — Venue & activities (1–5)" value="2 — ★★"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+          <label><input type="radio" name="Q7 — Venue & activities (1–5)" value="3 — ★★★"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+          <label><input type="radio" name="Q7 — Venue & activities (1–5)" value="4 — ★★★★"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+          <label><input type="radio" name="Q7 — Venue & activities (1–5)" value="5 — ★★★★★"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="card">
+      <div class="section-label">Section 4</div>
+      <div class="section-title">Follow-Through</div>
+
+      <div class="q">
+        <span class="q-label">8. How confident are you that the decisions and parking lot items from this week will be followed up?</span>
+        <div class="scale">
+          <span class="scale-ends">Not confident</span>
+          <div class="scale-opts" data-scale>
+            <label><input type="radio" name="Q8 — Follow-up confidence (1–5)" value="1" required>1</label>
+            <label><input type="radio" name="Q8 — Follow-up confidence (1–5)" value="2">2</label>
+            <label><input type="radio" name="Q8 — Follow-up confidence (1–5)" value="3">3</label>
+            <label><input type="radio" name="Q8 — Follow-up confidence (1–5)" value="4">4</label>
+            <label><input type="radio" name="Q8 — Follow-up confidence (1–5)" value="5">5</label>
+          </div>
+          <span class="scale-ends">Very confident</span>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="q-label" for="q9">9. One thing we should do differently next time: <span class="opt">(optional)</span></label>
+        <textarea id="q9" name="Q9 — Do differently next time" maxlength="500" placeholder="Your suggestion…"></textarea>
+      </div>
+    </div>
+
+    <div class="submit-row">
+      <button type="submit" id="submitBtn">Submit feedback</button>
+    </div>
+  </form>
+
+  <footer>
+    Thank you. Summary and actions will be shared by Huan in the coming weeks.
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  // Thank-you state after redirect back
+  if (new URLSearchParams(location.search).has('submitted')) {
+    document.body.classList.add('submitted');
+    return;
+  }
+
+  // Redirect target after successful submission
+  document.getElementById('nextUrl').value =
+    location.origin + location.pathname + '?submitted=1';
+
+  // Star ratings
+  document.querySelectorAll('[data-stars]').forEach(function (group) {
+    var labels = Array.prototype.slice.call(group.querySelectorAll('label'));
+    function paint(n) {
+      labels.forEach(function (l, i) { l.classList.toggle('filled', i < n); });
+    }
+    labels.forEach(function (label, i) {
+      label.addEventListener('mouseenter', function () { paint(i + 1); });
+      label.querySelector('input').addEventListener('change', function () { paint(i + 1); });
+    });
+    group.addEventListener('mouseleave', function () {
+      var checked = group.querySelector('input:checked');
+      paint(checked ? labels.indexOf(checked.closest('label')) + 1 : 0);
+    });
+  });
+
+  // Highlight selected radios (choice rows + scales)
+  document.querySelectorAll('.choices input[type="radio"], [data-scale] input').forEach(function (input) {
+    input.addEventListener('change', function () {
+      var name = input.name;
+      document.querySelectorAll('input[name="' + CSS.escape(name) + '"]').forEach(function (r) {
+        r.closest('label').classList.toggle('checked', r.checked);
+      });
+    });
+  });
+
+  // Session checkboxes: max 3, aggregate into hidden field
+  var MAX = 3;
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('[data-sessions] input[type="checkbox"]'));
+  var counter = document.getElementById('counter');
+  var field = document.getElementById('sessionsField');
+  function refresh() {
+    var checked = boxes.filter(function (b) { return b.checked; });
+    var atMax = checked.length >= MAX;
+    boxes.forEach(function (b) {
+      b.disabled = atMax && !b.checked;
+      b.closest('label').classList.toggle('checked', b.checked);
+      b.closest('label').classList.toggle('disabled', b.disabled);
+    });
+    counter.textContent = checked.length + ' of 3 selected';
+    counter.classList.toggle('max', atMax);
+    field.value = checked.length
+      ? checked.map(function (b) { return b.value; }).join('; ')
+      : '—';
+  }
+  boxes.forEach(function (b) { b.addEventListener('change', refresh); });
+  refresh();
+
+  // Prevent double submission
+  document.getElementById('survey').addEventListener('submit', function () {
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+  });
+})();
+</script>
+</body>
+</html>
